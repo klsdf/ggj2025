@@ -20,4 +20,5 @@ MonoBehaviour:
       colorIndex: 10
       isIconRecursive: 0
       isColorRecursive: 0
-  bookmarks: []
+  bookmarks:
+  - guid: f7369b113829df74c9a4a2ed474c4c7d

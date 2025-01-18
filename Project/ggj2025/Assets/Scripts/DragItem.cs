@@ -21,8 +21,8 @@ public class DragItem : MonoBehaviour
 
     void Update()
     {
-        if (isAttached)
-        {
+        // if (isAttached)
+        // {
             // 持续向上移动
             transform.Translate(Vector3.up * Time.deltaTime);
             // 更新计时器
@@ -32,7 +32,7 @@ public class DragItem : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-        }
+        // }
     }
 
     void OnMouseDown()
@@ -46,31 +46,31 @@ public class DragItem : MonoBehaviour
     {
         if (isAttached) return; // 禁用拖动功能
         // 更新物体位置
-        transform.position = GetMouseWorldPosition() + offset;
+        // transform.position = GetMouseWorldPosition() + offset;
     }
 
     void OnMouseUp()
     {
         if (isAttached) return; // 禁用拖动功能
         // 使用圆形范围检测2D
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, snapDistance);
-        foreach (var hit in hits)
-        {
-            if (hit.gameObject.GetComponent<TargetItem>())
-            {
-                // 将 TargetItem 设为子物体
-                hit.gameObject.transform.SetParent(transform);
-                print("TargetItem 已成为子物体");
-                GameController.Instance.FindMeme(true);
-                AudioController.Instance.PlayLaugh();
+        // Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, snapDistance);
+        // foreach (var hit in hits)
+        // {
+        //     if (hit.gameObject.GetComponent<TargetItem>())
+        //     {
+        //         // 将 TargetItem 设为子物体
+        //         hit.gameObject.transform.SetParent(transform);
+        //         print("TargetItem 已成为子物体");
+        //         GameController.Instance.FindMeme(true);
+        //         AudioController.Instance.PlayLaugh();
 
-                break; // 只处理一个目标物体
-            }
-        }
+        //         break; // 只处理一个目标物体
+        //     }
+        // }
 
-        // 只要玩家松手，就标记为已附加
-        isAttached = true;
-        GameController.Instance.FindMeme(false);
+        // // 只要玩家松手，就标记为已附加
+        // isAttached = true;
+        // GameController.Instance.FindMeme(false);
     }
 
     /// <summary>
