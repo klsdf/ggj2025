@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using DG.Tweening;
+[RequireComponent(typeof(BoxCollider2D))]
 public class TargetItem : MonoBehaviour
 {
     // public GameObject targetItem; // 目标物体
@@ -27,21 +28,48 @@ public class TargetItem : MonoBehaviour
         }
         else
         {
-            Debug.Log("没有找到原因");
+            Debug.Log("没有找到原因状态："+reason);
         }
 
     }
 
+    
 
+
+    public GameObject artGallery;
+    public GameObject leftEye;
+    public GameObject rightEye;
+    public GameObject oldMan;
+
+
+    public GameObject city;
 
     private void DoSpecialAction()
     {       
 
-        switch (gameObject.name)
+        switch (result)
         {
-            // case "苹果是气泡":
-            //     Debug.Log("执行特殊动作");
-            //     break;
+            case "艺术家是气泡":
+                Debug.Log("艺术馆的墙打开了");
+                artGallery.GetComponent<BoxCollider2D>().enabled = true;
+                break;
+            case "左边的眼泪是气泡":
+                Debug.Log("左边的眼泪是气泡");
+                leftEye.transform.DORotate(new Vector3(0, 0, -20), 1f);
+
+                break;
+            case "右边的眼泪是气泡":
+                Debug.Log("右边的眼泪是气泡");
+                rightEye.transform.DORotate(new Vector3(0, 0, 30), 1f);
+                break;
+            case "脸上的苹果是气泡":
+                Debug.Log("脸上的苹果是气泡");
+                oldMan.SetActive(true);
+                break;
+            case "死亡是气泡":
+                Debug.Log("死亡是气泡");
+                city.GetComponent<BoxCollider2D>().enabled = true;
+                break;
             default:
                 Debug.Log("执行默认动作" + gameObject.name);
                 break;

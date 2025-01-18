@@ -25,18 +25,8 @@ public class RuleController : Singleton<RuleController>
 
     void Start()
     {
-
-        // states.Add("气泡是圆的");
-        // states.Add("苹果是气泡");
-        AddState("气泡是圆的，而且苹果是圆的", "苹果是气泡");
-
-        // rules = new List<Rule>(){
-        //     new Rule() { reason = "气泡是圆的", result = "苹果是气泡" },
-        //     new Rule() { reason = "苹果是气泡", result = "脸上的东西是气泡" },
-        //     new Rule() { reason = "脸上的东西是气泡", result = "哭泣的脸是气泡" },
-        //     new Rule() { reason = "哭泣的脸是气泡", result = "饥饿的脸是气泡" },
-        //     // new Rule() { reason = "饥饿的脸是气泡", result = "饥饿的脸是气泡" }
-        // };
+        AddState("气泡是圆的", "圆形的是气泡");
+        AddState("气泡本身有单选框的意思", "单选框是气泡");
     }
 
 

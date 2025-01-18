@@ -13,7 +13,11 @@ public enum LevelObjType
     浴缸,
     办公室,
     白板,
+    电脑,
+    教室,
+    考试卷,
     
+
 }
 
 
