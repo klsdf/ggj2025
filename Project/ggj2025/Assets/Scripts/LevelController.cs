@@ -9,6 +9,11 @@ public enum LevelObjType
     珍珠耳环的少女,
     伊凡杀子,
     大地图,
+    浴室,
+    浴缸,
+    办公室,
+    白板,
+    
 }
 
 
