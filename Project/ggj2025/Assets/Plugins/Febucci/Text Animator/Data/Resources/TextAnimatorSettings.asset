@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: TextAnimatorSettings
   m_EditorClassIdentifier: 
   behaviors:
-    defaultDatabase: {fileID: 0}
+    defaultDatabase: {fileID: 11400000, guid: 30af4faef1bfe4d46a302e39a4d7d261, type: 2}
     enabled: 1
     openingSymbol: 60
     closingSymbol: 62
   appearances:
-    defaultDatabase: {fileID: 0}
+    defaultDatabase: {fileID: 11400000, guid: 6996bf1c5285186429728966241f38a1, type: 2}
     enabled: 1
     openingSymbol: 123
     closingSymbol: 125
   actions:
-    defaultDatabase: {fileID: 0}
+    defaultDatabase: {fileID: 11400000, guid: fb96ee1d826629148a9df462a36bbcb0, type: 2}
     enabled: 1
     openingSymbol: 60
     closingSymbol: 62
-  defaultStyleSheet: {fileID: 0}
+  defaultStyleSheet: {fileID: 11400000, guid: 20fc15a0ea8e7a444984ee04cd64431f, type: 2}
   controlTags:
     disableTypewriter: notype

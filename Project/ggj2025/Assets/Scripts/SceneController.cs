@@ -45,17 +45,16 @@ public class SceneController : Singleton<SceneController>
             sceneObject.gameObject.SetActive(false);
         }
 
-        // 启动协程，延迟3秒后激活场景
-        StartCoroutine(DelayedActivateScene());
+        StartCoroutine(DelayedActivateScene(0.1f));
     }
 
     /// <summary>
     /// 协程：延迟3秒后激活场景。
     /// </summary>
     /// <returns>协程迭代器</returns>
-    private IEnumerator DelayedActivateScene()
+    private IEnumerator DelayedActivateScene(float delay)
     {
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(delay); 
         ActivateScene(startSceneType);
     }
 
@@ -65,7 +64,9 @@ public class SceneController : Singleton<SceneController>
     /// <param name="sceneType">要激活的场景类型。</param>
     public void ActivateScene(SceneType sceneType)
     {
-        backgroundToFade.DOFade(1, 2f).OnComplete(() =>
+        float fadeOutTime = 1f;//2
+        float fadeInTime = 1f;//3
+        backgroundToFade.DOFade(1, fadeOutTime).OnComplete(() =>
           {
             LogoPage.SetActive(false);
               foreach (var sceneObject in sceneObjects)
@@ -74,7 +75,7 @@ public class SceneController : Singleton<SceneController>
                   
                   sceneObject.gameObject.SetActive(sceneObject.type == sceneType);
               }
-              backgroundToFade.DOFade(0, 3f);
+              backgroundToFade.DOFade(0, fadeInTime);
           });
 
     }

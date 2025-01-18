@@ -62,6 +62,7 @@ public class DragItem : MonoBehaviour
                 hit.gameObject.transform.SetParent(transform);
                 print("TargetItem 已成为子物体");
                 GameController.Instance.FindMeme(true);
+                AudioController.Instance.PlayLaugh();
 
                 break; // 只处理一个目标物体
             }
