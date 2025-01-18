@@ -36,7 +36,7 @@ public class GameController : Singleton<GameController>
     };
 
     [SerializeField]
-    private int currentLevel = 0;
+    private int currentLevel = -1;
 
 
     public GameObject bubblePrefab;
@@ -44,12 +44,20 @@ public class GameController : Singleton<GameController>
     public Button nextButton;
 
     private void EnterNextLevel()
-    {        
-        LevelData levelData = levelDatas[currentLevel];
-        Init(levelData);
+    {
         currentLevel++;
-        
+
+        LevelData levelData = levelDatas[currentLevel];
+        print($"level: {currentLevel}，levelData.bubbleNum: {levelData.bubbleNum}，levelData.targetMeMeNum: {levelData.targetMeMeNum}");
+        Init(levelData);
+        LevelController.Instance.LoadLevel(currentLevel);
         // SceneController.Instance.ActivateScene(SceneType.Game);
+    }
+
+    public void UpdateUI(LevelData levelData)
+    {
+        bubbleNumText.text = $"气泡数量: {currentBubbleNum}/{levelData.bubbleNum}";
+        targetMeMeNumText.text = $"目标迷因数量: {currentMeMeNum}/{levelData.targetMeMeNum}";
     }
 
     private LevelData GetNowLevelData()
@@ -70,6 +78,11 @@ public class GameController : Singleton<GameController>
 
     public void FindMeme(bool isFind)
     {
+        if (isFind)
+        {
+            currentMeMeNum++;
+        }
+
         if (currentMeMeNum == GetNowLevelData().targetMeMeNum)
         {
             // 游戏胜利
@@ -83,12 +96,14 @@ public class GameController : Singleton<GameController>
             Debug.Log("游戏失败");
         }
     }
-    private void Start() {
+    private void Start()
+    {
+        currentLevel = -1;
         EnterNextLevel();
         nextButton.onClick.AddListener(EnterNextLevel);
     }
 
-    public void Init(LevelData levelData)
+    private void Init(LevelData levelData)
     {
         currentBubbleNum = levelData.bubbleNum;
         currentMeMeNum = 0;
@@ -97,9 +112,7 @@ public class GameController : Singleton<GameController>
 
     void Update()
     {
-        bubbleNumText.text = $"气泡数量: {currentBubbleNum}/{GetNowLevelData().bubbleNum}";
-        targetMeMeNumText.text = $"目标迷因数量: {currentMeMeNum}/{GetNowLevelData().targetMeMeNum}";
-
+        UpdateUI(GetNowLevelData());
 
         if (Input.GetMouseButtonDown(1))
         {
