@@ -26,8 +26,9 @@ public class RuleController : Singleton<RuleController>
     void Start()
     {
 
-        states.Add("气泡是圆的");
-        states.Add("苹果是气泡");
+        // states.Add("气泡是圆的");
+        // states.Add("苹果是气泡");
+        AddState("气泡是圆的，而且苹果是圆的", "苹果是气泡");
 
         // rules = new List<Rule>(){
         //     new Rule() { reason = "气泡是圆的", result = "苹果是气泡" },
