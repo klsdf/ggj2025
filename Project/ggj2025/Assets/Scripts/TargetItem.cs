@@ -19,6 +19,10 @@ public class TargetItem : MonoBehaviour
             GameObject bubble = GameController.Instance.CreateBubble(mousePosition);
             transform.SetParent(bubble.transform);
             AudioController.Instance.PlayClick();
+
+
+
+            DoSpecialAction();
             // Debug.Log(result);
         }
         else
@@ -27,4 +31,21 @@ public class TargetItem : MonoBehaviour
         }
 
     }
+
+
+
+    private void DoSpecialAction()
+    {       
+
+        switch (gameObject.name)
+        {
+            // case "苹果是气泡":
+            //     Debug.Log("执行特殊动作");
+            //     break;
+            default:
+                Debug.Log("执行默认动作" + gameObject.name);
+                break;
+        }
+    }
 }
+
