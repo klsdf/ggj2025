@@ -67,14 +67,13 @@ public class CityFly : MonoBehaviour
         temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
         temp.GetComponent<MoveDownText>().Init("轻轻的，不经意地炸开。");
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5f);
+        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+        temp.GetComponent<MoveDownText>().Init("制作组：帽子社");
+
+        yield return new WaitForSeconds(15f);
 
         SceneController.Instance.ActivateScene(SceneType.Start);
-
-
-
-
-
 
     }
 
