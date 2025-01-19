@@ -15,6 +15,12 @@ public class TargetItem : MonoBehaviour
         {
             // result = RuleController.Instance.GetResultByReason(reason);
             RuleController.Instance.AddState(reason, result);
+
+
+
+            string content = $"气泡迷因更新：因为<color=red>{reason}</color>，所以<color=red>{result}</color>";
+            AchievementController.Instance.SendAchievement(content);
+            
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
             GameObject bubble = GameController.Instance.CreateBubble(mousePosition);

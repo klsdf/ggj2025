@@ -45,7 +45,7 @@ public class SceneController : Singleton<SceneController>
             sceneObject.gameObject.SetActive(false);
         }
 
-        StartCoroutine(DelayedActivateScene(0.1f));
+        StartCoroutine(DelayedActivateScene(1f));
     }
 
     /// <summary>

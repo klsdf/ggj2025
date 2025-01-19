@@ -1,9 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor.SceneManagement;
 public class FirstEffect : MonoBehaviour
 {
 
-    public GameObject city;
+    // public GameObject city;
     public GameObject buildings;
 
     public GameObject clouds;
@@ -31,9 +32,12 @@ public class FirstEffect : MonoBehaviour
     }
     public void StartEffect()
     {
-        buildings.transform.DOMove(buildingsInitialPosition, 5f);
-        clouds.transform.DOMove(cloudsInitialPosition, 5f);
-        texts.transform.DOMove(textsInitialPosition, 5f);
+        buildings.transform.DOMove(buildingsInitialPosition, 10f);
+        clouds.transform.DOMove(cloudsInitialPosition, 10f);
+        texts.transform.DOMove(textsInitialPosition, 10f);
         print("开始效果");
+
+
+        AudioController.Instance.Play夜上海();
     }
 }

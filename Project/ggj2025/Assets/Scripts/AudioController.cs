@@ -10,6 +10,7 @@ public class AudioController : Singleton<AudioController>
     public AudioClip clickClip;
     public AudioClip clickClip2;
     public AudioClip bgmClip;
+    public AudioClip 夜上海;
 
     private AudioSource audioSource; // 音频源
 
@@ -43,6 +44,14 @@ public class AudioController : Singleton<AudioController>
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.clip = bgmClip;
         bgmSource.loop = true;
+        bgmSource.Play();
+    }
+
+    public void Play夜上海()
+    {
+        bgmSource.Stop();
+        bgmSource.clip = 夜上海;
+        
         bgmSource.Play();
     }
 
