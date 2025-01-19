@@ -20,6 +20,7 @@ public class TargetItem : MonoBehaviour
             GameObject bubble = GameController.Instance.CreateBubble(mousePosition);
             transform.SetParent(bubble.transform);
             AudioController.Instance.PlayClick();
+            AudioController.Instance.PlayLaugh();
 
 
 
@@ -42,7 +43,10 @@ public class TargetItem : MonoBehaviour
     public GameObject oldMan;
 
 
-    public GameObject city;
+    public GameObject cityFly;
+
+
+    public FirstEffect firstEffect;
 
     private void DoSpecialAction()
     {       
@@ -52,6 +56,14 @@ public class TargetItem : MonoBehaviour
             case "艺术家是气泡":
                 Debug.Log("艺术馆的墙打开了");
                 artGallery.GetComponent<BoxCollider2D>().enabled = true;
+               
+
+                break;
+
+            case "艺术馆是气泡":
+                // Debug.Log("城市飞起来了");
+                // cityFly.SetActive(true);
+                 firstEffect.StartEffect();
                 break;
             case "左边的眼泪是气泡":
                 Debug.Log("左边的眼泪是气泡");
@@ -68,7 +80,7 @@ public class TargetItem : MonoBehaviour
                 break;
             case "死亡是气泡":
                 Debug.Log("死亡是气泡");
-                city.GetComponent<BoxCollider2D>().enabled = true;
+                cityFly.GetComponent<BoxCollider2D>().enabled = true;
                 break;
             default:
                 Debug.Log("执行默认动作" + gameObject.name);

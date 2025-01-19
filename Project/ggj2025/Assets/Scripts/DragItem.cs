@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// DragItem 类用于实现物体的拖动功能。
+/// 气泡本体
 /// </summary>
 public class DragItem : MonoBehaviour
 {
@@ -10,6 +10,9 @@ public class DragItem : MonoBehaviour
     public float snapDistance = 1.0f; // 距离阈值
     private bool isAttached = false; // 是否已附加子物体
     private float destroyTimer = 0.0f; // 销毁计时器
+
+
+    private float speed = 3.0f;
 
     void Start()
     {
@@ -24,7 +27,7 @@ public class DragItem : MonoBehaviour
         // if (isAttached)
         // {
             // 持续向上移动
-            transform.Translate(Vector3.up * Time.deltaTime);
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
             // 更新计时器
             destroyTimer += Time.deltaTime;
             // 10秒后销毁物体
