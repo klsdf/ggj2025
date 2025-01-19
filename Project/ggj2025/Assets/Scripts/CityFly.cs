@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 using Sirenix.OdinInspector;
-public class CityFly : MonoBehaviour
+public class CityFly : Singleton<CityFly>
 {
     // public GameObject city;
     // public GameObject other;
@@ -21,7 +21,7 @@ public class CityFly : MonoBehaviour
     private bool isFly = false;
     
     [Button("飞起来")]
-    private void Fly()
+    public void Fly()
     {
         if(isFly) return;
         isFly = true;
@@ -48,48 +48,45 @@ public class CityFly : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         float randomX = 0f;
+        float initY = 8f;
         GameObject temp;
         // float randomY = Random.Range(-10, 10);
-         temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+         temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, initY, 0), Quaternion.identity);
         temp.GetComponent<MoveDownText>().Init("于是，这座城市和气泡一起漂浮起来");
 
 
         yield return new WaitForSeconds(5f);
-        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, initY, 0), Quaternion.identity);
 
         temp.GetComponent<MoveDownText>().Init("直到这个宇宙本身也变成气泡的一部分");
 
         yield return new WaitForSeconds(5f);
-        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, initY, 0), Quaternion.identity);
         temp.GetComponent<MoveDownText>().Init("或者");
 
         yield return new WaitForSeconds(5f);
-        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, initY, 0), Quaternion.identity);
         temp.GetComponent<MoveDownText>().Init("在它飞向天空之前，它就会带着人类的一起飘走的回忆");
 
         yield return new WaitForSeconds(5f);
-        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, initY, 0), Quaternion.identity);
         temp.GetComponent<MoveDownText>().Init("轻轻的，不经意地炸开。");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(6f);
         AudioController.Instance.PlayBubbleExplosion();
         Instantiate(爆炸效果, new Vector3(0, 0, 0), Quaternion.identity);
         LevelController.Instance.HideAllLevel();
 
         yield return new WaitForSeconds(5f);
-        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
+        temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, initY, 0), Quaternion.identity);
+        temp.transform.parent = null;
         temp.GetComponent<MoveDownText>().Init("制作组：帽子社\n制作人：闫辰祥\n特别鸣谢：雌小鬼 wood 阿伟");
-        
-        yield return new WaitForSeconds(5f);
+
+        yield return new WaitForSeconds(10f);
 
         SceneController.Instance.ActivateScene(SceneType.Start);
 
     }
 
 
-    void OnMouseDown()
-    {
-        Debug.Log("城市飞起来了");
-        Fly();
-    }
 }
