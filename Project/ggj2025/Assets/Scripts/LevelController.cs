@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public enum LevelObjType
 {
@@ -92,5 +93,14 @@ public class LevelController : Singleton<LevelController>
         }
         Instance.LoadLevel(currentLevel);
         AudioController.Instance.PlayClick2();
+    }
+
+    [Button("隐藏所有场景")]
+    public void HideAllLevel()
+    {
+        for (int i = 0; i < levelObjList.Count; i++)
+        {
+            levelObjList[i].levelObj.SetActive(false);
+        }
     }
 }

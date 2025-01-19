@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class RotateBubble : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public float rotationSpeed = 10.0f; // 旋转速度
+    public float rotationSpeed ; // 旋转速度
 
     void Update()
     {

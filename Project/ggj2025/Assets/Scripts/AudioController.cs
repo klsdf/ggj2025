@@ -11,6 +11,7 @@ public class AudioController : Singleton<AudioController>
     public AudioClip clickClip2;
     public AudioClip bgmClip;
     public AudioClip 夜上海;
+    public AudioClip bubbleExplosionClip;
 
     private AudioSource audioSource; // 音频源
 
@@ -18,6 +19,11 @@ public class AudioController : Singleton<AudioController>
     private AudioSource clickSource2;
 
     private AudioSource bgmSource;
+
+
+
+
+    private AudioSource bubbleExplosionSource;
 
     void Start()
     {
@@ -45,14 +51,27 @@ public class AudioController : Singleton<AudioController>
         bgmSource.clip = bgmClip;
         bgmSource.loop = true;
         bgmSource.Play();
+
+        bubbleExplosionSource = gameObject.AddComponent<AudioSource>();
+        bubbleExplosionSource.clip = bubbleExplosionClip;
+        bubbleExplosionSource.loop = false;
     }
 
     public void Play夜上海()
     {
         bgmSource.Stop();
         bgmSource.clip = 夜上海;
-        
+
         bgmSource.Play();
+    }
+
+
+    /// <summary>
+    /// 播放气泡爆炸音效
+    /// </summary>
+    public void PlayBubbleExplosion()
+    {
+        bubbleExplosionSource.Play();
     }
 
 

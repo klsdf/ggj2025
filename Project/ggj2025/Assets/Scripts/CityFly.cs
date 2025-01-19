@@ -18,10 +18,13 @@ public class CityFly : MonoBehaviour
     public GameObject moveDownTextPrefab;
     
 
+    private bool isFly = false;
     
     [Button("飞起来")]
     private void Fly()
     {
+        if(isFly) return;
+        isFly = true;
         bubble.transform.DOLocalMove(new Vector3(6, 0, 0), 5f).OnComplete(() => {
             bubble.GetComponent<SpriteRenderer>().sortingOrder = 109;
         });
@@ -39,6 +42,7 @@ public class CityFly : MonoBehaviour
         StartCoroutine(EndEffect());
     }
 
+    public GameObject 爆炸效果;
 
     IEnumerator EndEffect()
     {
@@ -67,11 +71,16 @@ public class CityFly : MonoBehaviour
         temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
         temp.GetComponent<MoveDownText>().Init("轻轻的，不经意地炸开。");
 
+        yield return new WaitForSeconds(1f);
+        AudioController.Instance.PlayBubbleExplosion();
+        Instantiate(爆炸效果, new Vector3(0, 0, 0), Quaternion.identity);
+        LevelController.Instance.HideAllLevel();
+
         yield return new WaitForSeconds(5f);
         temp = Instantiate(moveDownTextPrefab, new Vector3(randomX, 10, 0), Quaternion.identity);
-        temp.GetComponent<MoveDownText>().Init("制作组：帽子社");
-
-        yield return new WaitForSeconds(15f);
+        temp.GetComponent<MoveDownText>().Init("制作组：帽子社\n制作人：闫辰祥\n特别鸣谢：雌小鬼 wood 阿伟");
+        
+        yield return new WaitForSeconds(5f);
 
         SceneController.Instance.ActivateScene(SceneType.Start);
 

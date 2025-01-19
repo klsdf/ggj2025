@@ -12,7 +12,11 @@ public class DragItem : MonoBehaviour
     private float destroyTimer = 0.0f; // 销毁计时器
 
 
-    private float speed = 3.0f;
+    private float speed = 1.0f;
+
+
+
+    public GameObject 爆炸效果;
 
     void Start()
     {
@@ -21,6 +25,10 @@ public class DragItem : MonoBehaviour
         // 获取 TargetItem 的引用
         // targetItem = GameObject.FindObjectOfType<TargetItem>().gameObject;
     }
+
+
+
+    private float lifeTime = 2.0f;
 
     void Update()
     {
@@ -31,9 +39,14 @@ public class DragItem : MonoBehaviour
             // 更新计时器
             destroyTimer += Time.deltaTime;
             // 10秒后销毁物体
-            if (destroyTimer >= 10.0f)
+            if (destroyTimer >= lifeTime)
             {
+                // 销毁物体
                 Destroy(gameObject);
+                // 播放爆炸音效
+                AudioController.Instance.PlayBubbleExplosion();
+                // 生成爆炸效果
+                Instantiate(爆炸效果, transform.position, Quaternion.identity);
             }
         // }
     }

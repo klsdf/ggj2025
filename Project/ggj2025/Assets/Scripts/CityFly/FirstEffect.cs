@@ -10,6 +10,8 @@ public class FirstEffect : MonoBehaviour
     public GameObject clouds;
     public GameObject texts;
 
+    public SceneTitleBubble titleBubble;
+
     private Vector3 buildingsInitialPosition;
     private Vector3 cloudsInitialPosition;
     private Vector3 textsInitialPosition;
@@ -35,6 +37,7 @@ public class FirstEffect : MonoBehaviour
         buildings.transform.DOMove(buildingsInitialPosition, 10f);
         clouds.transform.DOMove(cloudsInitialPosition, 10f);
         texts.transform.DOMove(textsInitialPosition, 10f);
+        titleBubble.Run();
         print("开始效果");
 
 
